@@ -7,10 +7,21 @@ def text_analyze(text):
     pattern = r'[^a-zA-Zа-яА-Я]'
     if re.search(pattern, text):
         return (False, "Ошибка: Текст содержит недопустимые символы.")
+    rus_pattern = r'[а-яА-ЯёЁ]'
+    eng_pattern = r'[a-zA-Z]'
+    if re.search(rus_pattern, text) and re.search(eng_pattern, text):
+        return (False, "Ошибка: Текст содержит смешанные алфавиты.")
     return (True, "Текст корректен.")
 def separated(output):
-    text = output['text']
-    for i in range(len(text)):
-        if i % 5 == 0:
-            text = text[:i] + " " + text[i:]
-    return text
+    if type(output) == dict:
+        text = output['text']
+    else:
+        text = output
+    
+    result = ""
+    for i, char in enumerate(text):
+        if i > 0 and i % 5 == 0:  # Каждые 5 символов
+            result += " "
+        result += char
+    
+    return result

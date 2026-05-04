@@ -7,8 +7,8 @@ def normalize_shift(shift: int, alphabet_size: int) -> int:
 def caesar_encrypt(text: str, shift: int) -> str:
     result = []
 
+    # замена ё
     for char in text:
-        # Замена ё
         if char == 'ё':
             char = 'е'
         elif char == 'Ё':

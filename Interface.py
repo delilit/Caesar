@@ -12,6 +12,8 @@ class CaesarApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Шифр Цезаря")
+        self.root.geometry("600x400")  # ширина x высота
+        self.root.minsize(600, 400)
 
         self.main_frame()
 
@@ -61,7 +63,7 @@ class CaesarApp:
                 output.config(state='disabled')
                 return
             result = caesar_encrypt(text, shift)
-            #result = separated(result)
+            result = separated(result)
             output.config(state='normal')
             output.delete("1.0", tk.END)
             output.insert(tk.END, result)
