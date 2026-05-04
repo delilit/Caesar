@@ -4,7 +4,7 @@ def text_analyze(text):
         return (False, "Ошибка: Текст содержит цифры.")
     if text == "":
         return (False, "Ошибка: Текст не может быть пустым.")
-    pattern = r'[^a-zA-Zа-яА-Я]'
+    pattern = r'[^a-zA-Zа-яА-Я\s]'
     if re.search(pattern, text):
         return (False, "Ошибка: Текст содержит недопустимые символы.")
     rus_pattern = r'[а-яА-ЯёЁ]'
