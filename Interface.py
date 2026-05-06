@@ -48,11 +48,18 @@ class CaesarApp:
 
         output = tk.Text(frame, height=5, width=40)
         output.pack(pady=10)
-        output.config(state='disabled')  # делаем read-only
+        output.config(state='disabled')
 
         def encrypt_action():
             text = input_text.get("1.0", tk.END).strip()
-            shift = int(shift_entry.get())
+            try:
+                shift = int(shift_entry.get())
+            except:
+                output.config(state='normal')
+                output.delete("1.0", tk.END)
+                output.insert(tk.END, "Ошибка: поле сдвига не может быть пустым")
+                output.config(state='disabled')
+                return
             is_valid, message = text_analyze(text)
             if not is_valid:
                 output.config(state='normal')
