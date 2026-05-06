@@ -7,31 +7,25 @@ def normalize_shift(shift: int, alphabet_size: int) -> int:
 def caesar_encrypt(text: str, shift: int) -> str:
     result = []
 
-    # замена ё
     for char in text:
-        if char == 'ё':
+        if char == 'ё' or char == 'Ё':
             char = 'е'
-        elif char == 'Ё':
-            char = 'Е'
 
-        # Кириллица
-        if char.lower() in RUS_ALPHABET:
+        char = char.lower()
+
+        if char in RUS_ALPHABET:
             alphabet = RUS_ALPHABET
-        # Латиница
-        elif char.lower() in ENG_ALPHABET:
+        elif char in ENG_ALPHABET:
             alphabet = ENG_ALPHABET
         else:
             result.append(char)
             continue
 
-        is_upper = char.isupper()
-        base_char = char.lower()
-
         shift_norm = normalize_shift(shift, len(alphabet))
-        idx = alphabet.index(base_char)
+        idx = alphabet.index(char)
         new_char = alphabet[(idx + shift_norm) % len(alphabet)]
 
-        result.append(new_char.upper() if is_upper else new_char)
+        result.append(new_char)
 
     return ''.join(result)
 
