@@ -60,7 +60,7 @@ def break_for_alphabet(ciphertext, alphabet, ref_freq):
             best_shift = shift
             best_text = decrypted
 
-    return best_shift, best_score, best_text
+    return best_shift, best_score, best_text #best_score is a debungging information, that is unnecessary for a working code.
 
 def break_caesar_auto(ciphertext: str):
     text = ciphertext.lower().replace('ё', 'е')

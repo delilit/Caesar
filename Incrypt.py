@@ -1,9 +1,5 @@
 from Decrypt import RUS_ALPHABET, ENG_ALPHABET
 
-def normalize_shift(shift: int, alphabet_size: int) -> int:
-    return shift % alphabet_size
-
-
 def caesar_encrypt(text: str, shift: int) -> str:
     result = []
 
@@ -21,7 +17,7 @@ def caesar_encrypt(text: str, shift: int) -> str:
             result.append(char)
             continue
 
-        shift_norm = normalize_shift(shift, len(alphabet))
+        shift_norm = shift % len(alphabet)
         idx = alphabet.index(char)
         new_char = alphabet[(idx + shift_norm) % len(alphabet)]
 

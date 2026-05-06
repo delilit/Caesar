@@ -21,7 +21,6 @@ class CaesarApp:
         for widget in self.root.winfo_children():
             widget.destroy()
 
-    # --- Главное меню ---
     def main_frame(self):
         self.clear_window()
 
@@ -33,7 +32,6 @@ class CaesarApp:
         ttk.Button(frame, text="Зашифровать", command=self.encrypt_frame).pack(pady=5)
         ttk.Button(frame, text="Дешифровать", command=self.decrypt_frame).pack(pady=5)
 
-    # --- Окно шифрования ---
     def encrypt_frame(self):
         self.clear_window()
 
