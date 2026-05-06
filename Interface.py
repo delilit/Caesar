@@ -31,7 +31,7 @@ class CaesarApp:
 
         ttk.Button(frame, text="Зашифровать", command=self.encrypt_frame).pack(pady=5)
         ttk.Button(frame, text="Дешифровать", command=self.decrypt_frame).pack(pady=5)
-
+# Encrypt
     def encrypt_frame(self):
         self.clear_window()
 
@@ -77,7 +77,7 @@ class CaesarApp:
         ttk.Button(frame, text="Зашифровать", command=encrypt_action).pack(pady=5)
         ttk.Button(frame, text="Назад", command=self.main_frame).pack()
 
-    # --- Окно дешифрования ---
+# Decrypt
     def decrypt_frame(self):
         self.clear_window()
 
@@ -109,8 +109,6 @@ class CaesarApp:
         ttk.Button(frame, text="Дешифровать", command=decrypt_action).pack(pady=5)
         ttk.Button(frame, text="Назад", command=self.main_frame).pack()
 
-
-# --- Запуск ---
 if __name__ == "__main__":
     root = tk.Tk()
     app = CaesarApp(root)
